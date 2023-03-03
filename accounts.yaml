@@ -1,11 +1,12 @@
-openapi: '3.0.2'
+openapi: 3.0.0
 info:
-  title: API Title
-  version: '1.0'
+  title: Kooltra Accounts API
+  description: Account API for REST operation within counterparty data
+  version: 0.1.0
 servers:
-  - url: https://sandbox.api.kooltra.com/v1
+  - url: https://sandbox.api.kooltra.com/v1/accounts
 paths:
-  /:
+  '/':
     get:
       responses:
         '200':
