@@ -1,10 +1,10 @@
 openapi: 3.0.0
 info:
-  title: Kooltra Accounts API
+  title: Accounts API
   description: Account API for REST operation within counterparty data
   version: 0.1.0
 servers:
-  - url: https://sandbox.api.kooltra.com/v1/accounts
+  - url: https://sandbox.api/v1/accounts
 paths:
   '/':
     get:
@@ -17,12 +17,51 @@ paths:
                 type: array
                 items:
                   "$ref": "#/components/schemas/Account"
+    post:
+      requestBody:
+        required: true
+        content:
+          "application/json":
+            schema:
+              $ref: "#/components/schemas/Account"
+      responses:
+        200:
+          description: OK
+            
+  '/{id}':
+    get:
+      parameters:
+        - in: path
+          name: id
+          description: The unique identifier of the Account
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            "application/json":
+              schema:
+                $ref: "#/components/schemas/Account"
+       
             
 
 components:
   schemas:
     Account:
       type: object
+      required:
       properties:
+        id:
+          type: string
+          description: The unique identifier of the Account
         code:
           type: string
+          description: The code of the Account
+        firstName:
+          type: string
+          description: The first name of the owner of the Account
+        lastName:
+          type: string
+          description: The last name of the owner of the Account
