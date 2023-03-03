@@ -1,0 +1,27 @@
+openapi: '3.0.2'
+info:
+  title: API Title
+  version: '1.0'
+servers:
+  - url: https://sandbox.api.kooltra.com/v1
+paths:
+  /:
+    get:
+      responses:
+        '200':
+          description: OK
+          content:
+            "application/json":
+              schema: 
+                type: array
+                items:
+                  "$ref": "#/components/schemas/Account"
+            
+
+components:
+  schemas:
+    Account:
+      type: object
+      properties:
+        code:
+          type: string
